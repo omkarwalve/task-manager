@@ -26,7 +26,7 @@ function Update(){
       function handleclick(){
         
         async function updateDB(){
-          const responsestore = await fetch("http://localhost:5000/update",{
+          const responsestore = await fetch("https://task-manager-1uk3.onrender.com/update",{
               method:'POST',
               headers:{
                   'Content-Type': 'application/x-www-form-urlencoded',

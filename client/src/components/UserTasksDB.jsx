@@ -18,7 +18,7 @@ function UserTasksDB(){
    
    
     const  storeUserToDB =async ()=>{
-      const responsestore = await fetch("http://localhost:5000/",{
+      const responsestore = await fetch("https://task-manager-1uk3.onrender.com/",{
          method:'POST',
          headers:{
              'Content-Type': 'application/x-www-form-urlencoded',
@@ -35,7 +35,7 @@ function UserTasksDB(){
      }
   
      const getDataFromDB = async ()=>{
-      const responseget = await fetch("http://localhost:5000/").catch((err)=>console.log(err))
+      const responseget = await fetch("https://task-manager-1uk3.onrender.com/").catch((err)=>console.log(err))
       const jsonResp = await responseget.json()
       setdata(jsonResp)
 
@@ -44,7 +44,7 @@ function UserTasksDB(){
 
     const Delete = async (id)=>{
 
-      await fetch("http://localhost:5000/delete",{
+      await fetch("https://task-manager-1uk3.onrender.com/delete",{
         method:'POST',
         headers:{
             'Content-Type': 'application/x-www-form-urlencoded',

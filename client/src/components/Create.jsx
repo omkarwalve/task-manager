@@ -40,7 +40,7 @@ function Create(){
 
     function handleClick(){
         async function saveDB(){
-            const responsestore = await fetch("http://localhost:5000/newtask",{
+            const responsestore = await fetch("https://task-manager-1uk3.onrender.com/newtask",{
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded',
