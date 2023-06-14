@@ -4,8 +4,8 @@
   "description": "Task-manager application build with mern stack does task management for users.\r User just have to enter username and email and start creating task. This application does CRUD operations with storage of users task in mongodb database.",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd backend && npm install",
-    "start-server": "cd backend && node server.js",
+    "install-server": "cd Server && npm install",
+    "start-server": "cd Server && node server.js",
     "install-client": "cd client && npm install",
     "build-client": "cd client && npm run build",
     "start-client": "cd client && npm run start"
