@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors())
-const port = 5000;
+const port = process.env.PORT;
 //connection of mongodb 
 const conn = require('./route/mongodb-connection.js')
 conn.connection()
