@@ -38,5 +38,5 @@ Website will be viewed on browser or just type the localhost url.
 
 ## Output Images
 
-![Screenshot of task-manager dashboard showing three tasks](https://drive.google.com/file/d/18jHncHWDzGgR-Q6ZmDD67bVD9VN0bMUi/view?usp=sharing)
+![Screenshot of task-manager dashboard showing three tasks](https://drive.google.com/uc?export=view&id=18jHncHWDzGgR-Q6ZmDD67bVD9VN0bMUi)
 
