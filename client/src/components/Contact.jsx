@@ -89,8 +89,11 @@ function Contact (){
         },[formerrors])
 
 
-    return(<div>
-          <p hidden={!hidden}>{sendmessage}</p>
+    return(<div className="ack container-fluid">
+           <div  hidden={!hidden}>
+          <p >{sendmessage}</p>
+          <p> Redirecting to Home ...</p>
+          </div>
          <div className="get-profile-div container-fluid" hidden={hidden}>
         
         <div className="get-task-box">

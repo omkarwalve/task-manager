@@ -72,6 +72,13 @@ button.navbar-toggler{
     background-attachment: fixed;
     
 }
+.ack{
+    display: flex;
+    justify-content: center;
+    height: 81vh;
+    align-items: center;
+    
+}
 
 
 input.name::placeholder{
@@ -205,6 +212,10 @@ form p{
     margin-bottom: 5px;
     color: red;
 }
+.ack p{
+ color: #f0f0f0;
+ font-size: 32px;
+}
 form p:hover{
     color: red;
 }
@@ -226,7 +237,9 @@ button a:link,:visited,:hover,:active{
     align-items: center;
 }
 
-
+.zoomin{
+    box-shadow: 10px 5px 5px red;
+  }
 @media screen and (min-width: 992px) and (max-width:1831px) {
     .update-button{
          position: absolute;
@@ -236,6 +249,13 @@ button a:link,:visited,:hover,:active{
     }
   }
 
-  .zoomin{
-    box-shadow: 10px 5px 5px red;
-  }
+  @media screen and (min-width: 500px)  {
+    
+    .ack p{
+        color: #f0f0f0;
+        font-size: 20px;
+       }
+    }
+  
+
+ 
