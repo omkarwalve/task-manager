@@ -89,8 +89,8 @@ function Contact (){
         },[formerrors])
 
 
-    return(<div className="ack container-fluid">
-           <div  hidden={!hidden}>
+    return(<div >
+           <div className="ack container-fluid" hidden={!hidden} >
           <p >{sendmessage}</p>
           <p> Redirecting to Home ...</p>
           </div>
