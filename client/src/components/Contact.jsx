@@ -10,7 +10,8 @@ function Contact (){
     const [formerrors,setformerrors]=useState({})
     const [isSubmit,setisSubmit]=useState(false)
     const [hidden,sethidden]=useState(false)
-    const navigate = useNavigate()
+    const [sendmessage,setsendmessage]=useState("")
+    const navigator = useNavigate()
 
     const handleSubmit=(e)=>{
       e.preventDefault()
@@ -56,8 +57,17 @@ function Contact (){
               const message = await responsestore.json()
               if(message.send){
                 console.log("Message send successfully")
+                setsendmessage("Message send successfully")
+                sethidden(true)
+                setTimeout(()=>{
+                    navigator('/')
+                }, 5000);
+
+                
+
               }else{
                 console.log("Error while sending message , please try again.")
+                setsendmessage("Error while sending message , please try again.")
               }
 
             }
@@ -80,7 +90,8 @@ function Contact (){
 
 
     return(<div>
-         <div className="get-profile-div container-fluid">
+          <p hidden={!hidden}>{sendmessage}</p>
+         <div className="get-profile-div container-fluid" hidden={hidden}>
         
         <div className="get-task-box">
         
