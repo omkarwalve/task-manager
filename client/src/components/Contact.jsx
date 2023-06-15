@@ -37,7 +37,7 @@ function Contact (){
     }
     const handleClick=()=>{
         async function sendmail(){
-            const responsestore = await fetch("http://localhost:5000/contact",{
+            const responsestore = await fetch("https://task-manager-1uk3.onrender.com/contact",{
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded',
