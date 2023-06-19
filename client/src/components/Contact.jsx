@@ -66,9 +66,9 @@ function Contact (){
                 console.log("Message send successfully")
                 setsendmessage("Message send successfully")
                 sethidden(true)
-                // setTimeout(()=>{
-                //     navigator('/')
-                // }, 5000);
+                setTimeout(()=>{
+                    navigator('/')
+                }, 5000);
 
                 
 
