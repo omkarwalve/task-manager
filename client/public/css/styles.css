@@ -74,6 +74,7 @@ button.navbar-toggler{
 }
 .ack{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 81vh;
     align-items: center;
@@ -240,6 +241,41 @@ button a:link,:visited,:hover,:active{
 .zoomin{
     box-shadow: 10px 5px 5px red;
   }
+
+  /* loading spinner css */
+
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3; /* Light grey */
+    border-top: 10px solid #383636; /* Blue */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+  
+  .spinner-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+  }
+
+  .custom-spinner{
+    position: absolute;
+    width: 100%;
+    height: 83%;
+    backdrop-filter: blur(2px);
+  }
+
+  /* media queries */
 @media screen and (min-width: 992px) and (max-width:1831px) {
     .update-button{
          position: absolute;
@@ -249,13 +285,21 @@ button a:link,:visited,:hover,:active{
     }
   }
 
-  @media screen and (min-width: 500px)  {
+  @media screen and (min-width: 300px)  {
     
     .ack p{
         color: #f0f0f0;
         font-size: 20px;
        }
     }
+
+    @media screen and (min-width: 700px)  {
+    
+        .ack p{
+            color: #f0f0f0;
+            font-size: 30px;
+           }
+        }
   
 
  

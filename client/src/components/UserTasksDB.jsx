@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {user} from "./GetProfile"
 import {Link ,useNavigate} from 'react-router-dom';
+import LoaderSpinner from "./LoaderSpinner";
 
 
 
@@ -10,6 +11,10 @@ function UserTasksDB(){
     const [data, setdata]=useState(null)
 
     const [process,setprocess]=useState(false)
+
+    // for spinner
+    const [isLoading, setIsLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
     
 
   
@@ -35,9 +40,10 @@ function UserTasksDB(){
      }
   
      const getDataFromDB = async ()=>{
-      const responseget = await fetch("https://task-manager-1uk3.onrender.com/").catch((err)=>console.log(err))
+      const responseget = await fetch("https://task-manager-1uk3.onrender.com/").catch((err)=>{setErrorMessage(err.stack);setIsLoading(false);console.log(err)})
       const jsonResp = await responseget.json()
       setdata(jsonResp)
+      setIsLoading(false)
 
      
      }
@@ -91,18 +97,9 @@ function UserTasksDB(){
       }
       }
      
-      
-    return(
-    
-  
-    
-    <div className="container-fluid task-div">
-   <div className="header-section">
-   <h3 className="task-header">Tasks</h3>
-    <button  name="create" onClick={(e)=>handleclick(null,e)} className="btn btn-outline-secondary create-button">Create new Task</button>
-   </div>
-    
-   <p hidden={data?.Tasks.length>0}>You have no tasks , Create new tasks.</p>
+      const renderusers= (
+        <>
+        <p hidden={data?.Tasks.length>0}>You have no tasks , Create new tasks.</p>
       <div className="row">
      { data?.Tasks?.slice(0).reverse().map((res) => (
 
@@ -122,6 +119,21 @@ function UserTasksDB(){
       ))
       }
       </div>
+      </>
+      )
+      
+    return(
+    
+  
+    
+    <div className="container-fluid task-div">
+   <div className="header-section">
+   <h3 className="task-header">Tasks</h3>
+    <button  name="create" disabled={isLoading} onClick={(e)=>handleclick(null,e)} className="btn btn-outline-secondary create-button">Create new Task</button>
+   </div>
+   {isLoading ? <LoaderSpinner /> : renderusers}
+   {errorMessage && <div className="error">{errorMessage}</div>}
+   
      
      
       

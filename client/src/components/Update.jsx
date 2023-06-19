@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserTasksDB from "./UserTasksDB";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LoaderSpinner from "./LoaderSpinner";
 
 function Update(){
     const location = useLocation()
@@ -10,6 +11,12 @@ function Update(){
     const [formerror,setformerror]=useState({})
     const [isSubmit,setisSubmit]=useState(false)
     const navigator=useNavigate();
+
+
+    // for spinner
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
     
     
       function handlechange(event){
@@ -44,7 +51,7 @@ function Update(){
             .catch((err)=>console.log(err))
             
             const message = await responsestore.json()
-
+            setIsLoading(false)
            if(message.updated){
             navigator('/')
            }else{
@@ -56,6 +63,7 @@ function Update(){
     }
 
     const handleSubmit=(e)=>{
+      setIsLoading(true)
       e.preventDefault()
       setformerror(validate(res))
       setisSubmit(true)
@@ -81,6 +89,10 @@ function Update(){
     },[formerror])
     
     return(
+        <>
+       <div hidden={!isLoading} className="spinner-container custom-spinner">
+        <div className="loading-spinner"></div>
+      </div>
         
         <div className="get-profile-div container-fluid">
         
@@ -103,7 +115,7 @@ function Update(){
         </form>
         </div>
          </div>   
-            
+         </>     
     
     )
 }

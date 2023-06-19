@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+import LoaderSpinner from "./LoaderSpinner";
 
 
 function Contact (){
@@ -13,7 +13,13 @@ function Contact (){
     const [sendmessage,setsendmessage]=useState("")
     const navigator = useNavigate()
 
+    // for spinner
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
+
     const handleSubmit=(e)=>{
+      setIsLoading(true)
       e.preventDefault()
       setformerrors(validate(contactinfo))
       setisSubmit(true)
@@ -55,13 +61,14 @@ function Contact (){
               .catch((err)=>console.log(err))
 
               const message = await responsestore.json()
+              setIsLoading(false)
               if(message.send){
                 console.log("Message send successfully")
                 setsendmessage("Message send successfully")
                 sethidden(true)
-                setTimeout(()=>{
-                    navigator('/')
-                }, 5000);
+                // setTimeout(()=>{
+                //     navigator('/')
+                // }, 5000);
 
                 
 
@@ -90,8 +97,12 @@ function Contact (){
 
 
     return(<div >
+      <div hidden={!isLoading} className="spinner-container custom-spinner">
+        <div className="loading-spinner"></div>
+      </div>
            <div className="ack container-fluid" hidden={!hidden} >
           <p >{sendmessage}</p>
+          <br />
           <p> Redirecting to Home ...</p>
           </div>
          <div className="get-profile-div container-fluid" hidden={hidden}>
@@ -99,6 +110,7 @@ function Contact (){
         <div className="get-task-box">
         
         <h4>Contact us</h4>
+        
         <form onSubmit={handleSubmit}>
 
         
@@ -108,7 +120,7 @@ function Contact (){
             <p>{formerrors.email}</p>
             <textarea name="Message"  onChange={handleChange} className="message" placeholder="Message" value={contactinfo.Message} />
              <p>{formerrors.Message}</p>
-             <button className="btn btn-light contactsubmit">Submit</button>   
+             <button className="btn btn-light contactsubmit" disabled={isLoading}>Submit</button>   
         </form>
         </div>
             

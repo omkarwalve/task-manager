@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import LoaderSpinner from "./LoaderSpinner";
 function Create(){
     const [task,settask]=useState({name:"",description:"",status:""})
     const [formerrors,setformerrors]=useState({})
     const [isSubmit,setisSubmit]=useState(false)
     const navigate = useNavigate()
+
+    // for spinner
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
     
     function handleChange(event){
         const {name,value} = event.target
@@ -18,6 +23,7 @@ function Create(){
     }
 
     const handleSubmit = (e)=>{
+        setIsLoading(true)
       e.preventDefault()
       setformerrors(validate(task))
       setisSubmit(true)
@@ -58,7 +64,7 @@ function Create(){
 
               const message = await responsestore.json()
               console.log(message)
-
+              setIsLoading(false)
               if(message.message=="success"){
                 console.log("added successfully")
                 navigate('/')
@@ -82,13 +88,18 @@ function Create(){
 
 
     return(
-
+<>
+        <div hidden={!isLoading} className="spinner-container custom-spinner">
+        <div className="loading-spinner"></div>
+      </div>
         <div className="get-profile-div container-fluid">
         
         <div className="get-task-box">
         
         <h4>Create Task</h4>
+        
         <form onSubmit={handleSubmit}>
+        
 
         
         <input name="name"  onChange={handleChange} className="name" placeholder="Name" value={task.name}/>
@@ -101,11 +112,12 @@ function Create(){
              <label for="status">Incomplete </label> <input type="radio" className="radios" value={false} name="status" /> 
              </div>
              <p>{formerrors.status}</p>
-             <button className="btn btn-light createsubmit">Submit</button>   
+             <button disabled={isLoading} className="btn btn-light createsubmit">Submit</button>   
         </form>
         </div>
             
              </div>
+             </>
     )
 }
 
