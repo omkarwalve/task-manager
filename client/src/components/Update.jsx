@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import UserTasksDB from "./UserTasksDB";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import LoaderSpinner from "./LoaderSpinner";
+
 
 function Update(){
     const location = useLocation()
@@ -31,6 +30,7 @@ function Update(){
       }
 
       function handleclick(){
+        setIsLoading(true)
         
         async function updateDB(){
           const responsestore = await fetch("https://task-manager-1uk3.onrender.com/update",{
@@ -63,7 +63,7 @@ function Update(){
     }
 
     const handleSubmit=(e)=>{
-      setIsLoading(true)
+      
       e.preventDefault()
       setformerror(validate(res))
       setisSubmit(true)

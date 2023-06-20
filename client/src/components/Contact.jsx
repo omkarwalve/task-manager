@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import LoaderSpinner from "./LoaderSpinner";
 
 
 function Contact (){
@@ -19,7 +18,6 @@ function Contact (){
     
 
     const handleSubmit=(e)=>{
-      setIsLoading(true)
       e.preventDefault()
       setformerrors(validate(contactinfo))
       setisSubmit(true)
@@ -43,6 +41,7 @@ function Contact (){
         return errors
     }
     const handleClick=()=>{
+       setIsLoading(true)
         async function sendmail(){
             const responsestore = await fetch("https://task-manager-1uk3.onrender.com/contact",{
                 method:'POST',
@@ -68,7 +67,7 @@ function Contact (){
                 sethidden(true)
                 setTimeout(()=>{
                     navigator('/')
-                }, 5000);
+                }, 3000);
 
                 
 

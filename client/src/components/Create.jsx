@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LoaderSpinner from "./LoaderSpinner";
+
 function Create(){
     const [task,settask]=useState({name:"",description:"",status:""})
     const [formerrors,setformerrors]=useState({})
@@ -23,7 +23,7 @@ function Create(){
     }
 
     const handleSubmit = (e)=>{
-        setIsLoading(true)
+        
       e.preventDefault()
       setformerrors(validate(task))
       setisSubmit(true)
@@ -45,6 +45,7 @@ function Create(){
     }
 
     function handleClick(){
+        setIsLoading(true)
         async function saveDB(){
             const responsestore = await fetch("https://task-manager-1uk3.onrender.com/newtask",{
                 method:'POST',
