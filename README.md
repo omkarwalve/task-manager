@@ -40,3 +40,5 @@ Website will be viewed on browser or just type the localhost url.
 
 ![Screenshot of task-manager dashboard showing three tasks](https://drive.google.com/uc?export=view&id=18jHncHWDzGgR-Q6ZmDD67bVD9VN0bMUi)
 
+This project is hosted online on render.com, Link - https://deploy-frontend-i4nt.onrender.com
+
